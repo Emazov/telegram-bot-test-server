@@ -3,7 +3,8 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import crypto from 'crypto';
 import TelegramBot from 'node-telegram-bot-api';
-import { PrismaClient } from './generated/prisma';
+// import { PrismaClient } from './generated/prisma';
+import { PrismaClient } from '@prisma/client';
 import dotenv from 'dotenv';
 
 dotenv.config();
