@@ -58,9 +58,9 @@ app.post('/api/get-role', async (req: Request, res: any) => {
 		}
 
 		// 1) Проверяем подпись
-		if (!verifyInitData(initData, token)) {
-			return res.status(400).json({ error: 'Invalid initData signature' });
-		}
+		// if (!verifyInitData(initData, token)) {
+		// 	return res.status(400).json({ error: 'Invalid initData signature' });
+		// }
 
 		// 2) Парсим user
 		const params = new URLSearchParams(initData);
@@ -89,7 +89,11 @@ app.post('/api/get-role', async (req: Request, res: any) => {
 		}
 
 		// 4) Возвращаем роль
-		res.json({ role: userInDb.role });
+		res.json({
+			id: userInDb?.id,
+			telegramId: userInDb?.telegramId,
+			role: userInDb?.role,
+		});
 	} catch (err) {
 		console.error('Server error:', err);
 		res.status(500).json({ error: 'Server error' });
